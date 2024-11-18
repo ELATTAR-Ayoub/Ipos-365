@@ -48,15 +48,10 @@ const formSchema = z
     email: z.string().email({
       message: "Please provide a valid email address.",
     }),
-    phone: z
-      .string()
-      .min(8, {
-        message: "Phone number must be at least 8 characters.",
-      })
-      .regex(phoneRegex, {
-        message:
-          "Please enter a valid Taiwan phone number (e.g., +886 0 936707440).",
-      }),
+    phone: z.string().regex(phoneRegex, {
+      message:
+        "Please enter a valid Taiwan phone number (e.g., +886 0 936707440).",
+    }),
     password: z
       .string()
       .min(8, {
@@ -68,9 +63,7 @@ const formSchema = z
       .regex(/[0-9]/, {
         message: "Password must contain at least one number.",
       }),
-    rPassword: z.string().min(8, {
-      message: "Password must be at least 8 characters.",
-    }),
+    rPassword: z.string(),
   })
   .refine((data) => data.password === data.rPassword, {
     message: "Passwords don't match.",
@@ -94,7 +87,7 @@ export function SignupForm() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       username: "",
-      phone: "(+886) ",
+      phone: "+886 ",
     },
   });
 

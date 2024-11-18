@@ -43,9 +43,7 @@ const formSchema = z
       .regex(/[0-9]/, {
         message: "Password must contain at least one number.",
       }),
-    rPassword: z.string().min(8, {
-      message: "Password must be at least 8 characters.",
-    }),
+    rPassword: z.string(),
   })
   .refine((data) => data.password === data.rPassword, {
     message: "Passwords don't match.",
