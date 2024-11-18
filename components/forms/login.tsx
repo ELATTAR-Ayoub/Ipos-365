@@ -93,7 +93,9 @@ export function LoginForm() {
   };
 
   return (
-    <section className={`  relative ${styles.flexCenter} w-full h-full `}>
+    <section
+      className={`  relative ${styles.flexCenter} w-full h-full overflow-y-auto`}
+    >
       <div
         className={`  relative ${styles.flexBetween} w-full h-full py-8 px-4 flex-col sm:max-w-[500px] space-y-4`}
       >
