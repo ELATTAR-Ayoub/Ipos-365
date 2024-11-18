@@ -16,7 +16,7 @@ export default function Page() {
       <ForgotPasswordForm />
 
       {/* Imagery */}
-      <section className={` relative w-full h-full hidden lg:block`}>
+      <section className={` relative w-full h-full hidden lg:block bg-primary`}>
         <img
           className="object-cover h-full w-full"
           alt="background image"
