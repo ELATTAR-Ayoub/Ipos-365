@@ -29,6 +29,7 @@ import { Checkbox } from "../ui/checkbox";
 
 // auth
 import { useAuth } from "@/context/AuthContext";
+import { SmallFooter } from "../small-footer";
 
 // Taiwan phone regex (matches the format: +886 0 936707440 or similar)
 const phoneRegex = /^(?:\+886[\s\-]?)?(?:0[\s\-]?)?\d{9}$/;
@@ -283,19 +284,7 @@ export function SignupForm() {
           )}
         </div>
 
-        <div className={`${styles.flexBetween} w-full ${styles.Xsmall}`}>
-          <p className={` `}>© 2024 Posive. All rights reserved.</p>
-
-          <div className={`${styles.flexStart} gap-2`}>
-            <Link className=" underline" href={"#"}>
-              Term & Condition
-            </Link>
-            <Separator orientation={"vertical"} className="shrink-0 h-4" />
-            <Link className=" underline" href={"#"}>
-              Privacy & Policy
-            </Link>
-          </div>
-        </div>
+        <SmallFooter />
 
         {/* loading */}
         {loading ? <Loader /> : <></>}

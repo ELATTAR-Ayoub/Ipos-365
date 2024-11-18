@@ -29,6 +29,7 @@ import { Separator } from "../ui/separator";
 
 // auth
 import { useAuth } from "@/context/AuthContext";
+import { SmallFooter } from "../small-footer";
 
 const formSchema = z.object({
   email: z.string().email({
@@ -172,9 +173,9 @@ export function LoginForm() {
 
                 <div className={`${styles.flexBetween} w-full`}>
                   <div className="flex items-center space-x-2">
-                    <Checkbox id="terms" />
+                    <Checkbox id="rememberMe" />
                     <label
-                      htmlFor="terms"
+                      htmlFor="rememberMe"
                       className={` text-xs font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70`}
                     >
                       Remember me
@@ -237,19 +238,7 @@ export function LoginForm() {
           )}
         </div>
 
-        <div className={`${styles.flexBetween} w-full ${styles.Xsmall}`}>
-          <p className={` `}>© 2024 Posive. All rights reserved.</p>
-
-          <div className={`${styles.flexStart} gap-2`}>
-            <Link className=" underline" href={"#"}>
-              Term & Condition
-            </Link>
-            <Separator orientation={"vertical"} className="shrink-0 h-4" />
-            <Link className=" underline" href={"#"}>
-              Privacy & Policy
-            </Link>
-          </div>
-        </div>
+        <SmallFooter />
 
         {/* loading */}
         {loading ? <Loader /> : <></>}

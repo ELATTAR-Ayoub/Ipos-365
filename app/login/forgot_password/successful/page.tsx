@@ -13,10 +13,13 @@ import { ForgotPasswordForm } from "@/components/forms/forgot-password";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, CircleCheck } from "lucide-react";
+import { SmallFooter } from "@/components/small-footer";
 
 export default function Page() {
   return (
-    <section className={`  relative ${styles.flexCenter}  w-full h-screen`}>
+    <section
+      className={`  relative ${styles.flexCenter}  w-full min-h-screen sm:h-screen`}
+    >
       <section className={`  relative ${styles.flexCenter} w-full h-full `}>
         <div
           className={`  relative ${styles.flexBetween} w-full h-full py-8 px-4 flex-col sm:max-w-[500px] space-y-4`}
@@ -61,19 +64,7 @@ export default function Page() {
           </div>
 
           {/* Footer */}
-          <div className={`${styles.flexBetween} w-full ${styles.Xsmall}`}>
-            <p className={` `}>© 2024 Posive. All rights reserved.</p>
-
-            <div className={`${styles.flexStart} gap-2`}>
-              <Link className=" underline" href={"#"}>
-                Term & Condition
-              </Link>
-              <Separator orientation={"vertical"} className="shrink-0 h-4" />
-              <Link className=" underline" href={"#"}>
-                Privacy & Policy
-              </Link>
-            </div>
-          </div>
+          <SmallFooter />
         </div>
       </section>
 

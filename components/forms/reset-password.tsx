@@ -29,6 +29,7 @@ import { Separator } from "../ui/separator";
 
 // auth
 import { useAuth } from "@/context/AuthContext";
+import { SmallFooter } from "../small-footer";
 
 const formSchema = z
   .object({
@@ -242,19 +243,7 @@ export function ResetPasswordForm() {
           )}
         </div>
 
-        <div className={`${styles.flexBetween} w-full ${styles.Xsmall}`}>
-          <p className={` `}>© 2024 Posive. All rights reserved.</p>
-
-          <div className={`${styles.flexStart} gap-2`}>
-            <Link className=" underline" href={"#"}>
-              Term & Condition
-            </Link>
-            <Separator orientation={"vertical"} className="shrink-0 h-4" />
-            <Link className=" underline" href={"#"}>
-              Privacy & Policy
-            </Link>
-          </div>
-        </div>
+        <SmallFooter />
 
         {/* loading */}
         {loading ? <Loader /> : <></>}

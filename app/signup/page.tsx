@@ -12,7 +12,9 @@ import { SignupForm } from "@/components/forms/signup";
 
 export default function Page() {
   return (
-    <section className={`  relative ${styles.flexCenter} w-full h-screen `}>
+    <section
+      className={`  relative ${styles.flexCenter} w-full min-h-screen sm:h-screen `}
+    >
       <SignupForm />
 
       {/* Imagery */}
