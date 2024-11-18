@@ -51,7 +51,7 @@ export default function Page() {
               </p>
               <Button className="w-full">
                 <Link
-                  className="text-sm font-medium text-inherit hover:!no-underline"
+                  className="text-sm font-medium text-inherit hover:!no-underline w-full h-full"
                   href={"/login"}
                 >
                   Go to home

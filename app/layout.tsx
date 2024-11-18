@@ -9,11 +9,12 @@ import styles from "@/styles/index";
 
 // components
 import Header from "@/components/Header";
+import { Toaster } from "@/components/ui/sonner";
 
 // redux
 import { store_0001 } from "../store/store";
 import { Provider } from "react-redux";
-import { useEffect } from "react";
+import { AuthContextProvider } from "@/context/AuthContext";
 
 export default function RootLayout({
   children,
@@ -29,11 +30,16 @@ export default function RootLayout({
       <body
         className={` ${styles.flexStart} flex-col relative bg-background h-screen overflow-x-hidden`}
       >
-        <Provider store={store_0001}>
-          <ThemeProvider attribute="class">
-            <main className={` relative w-full min-h-screen `}>{children}</main>
-          </ThemeProvider>
-        </Provider>
+        <AuthContextProvider>
+          <Provider store={store_0001}>
+            <ThemeProvider attribute="class">
+              <main className={` relative w-full min-h-screen `}>
+                {children}
+              </main>
+              <Toaster />
+            </ThemeProvider>
+          </Provider>
+        </AuthContextProvider>
       </body>
     </html>
   );

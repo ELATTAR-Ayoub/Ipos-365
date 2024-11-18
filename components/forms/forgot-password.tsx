@@ -31,17 +31,17 @@ import Loader from "../Loader";
 import { Separator } from "../ui/separator";
 
 // auth
-// import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/context/AuthContext";
 
 const formSchema = z.object({
-  email: z.string().min(10, {
-    message: "Email must be at least 10 characters.",
+  email: z.string().email({
+    message: "Please provide a valid email address.",
   }),
 });
 
 export function ForgotPasswordForm() {
   //
-  // const { user, signin, signinPopup } = useAuth();
+  const { resetPassword } = useAuth();
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState(false);
   const [errMsg, setErrMsg] = useState("");
@@ -62,7 +62,7 @@ export function ForgotPasswordForm() {
     // ✅ This will be type-safe and validated.
     setLoading(true);
     try {
-      // await signin(values.email, values.password);
+      await resetPassword();
       setLoading(false);
       // router.push(`/login/forgot_password/23152ih5ij2g5if325v`);
     } catch (err) {

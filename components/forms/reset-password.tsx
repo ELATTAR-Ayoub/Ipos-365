@@ -28,7 +28,7 @@ import Loader from "../Loader";
 import { Separator } from "../ui/separator";
 
 // auth
-// import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/context/AuthContext";
 
 const formSchema = z
   .object({
@@ -53,7 +53,7 @@ const formSchema = z
   });
 
 export function ResetPasswordForm() {
-  // const { user, signin, signinPopup } = useAuth();
+  const { createNewPassword } = useAuth();
   const [loading, setLoading] = useState(false);
   const [passwordStrength, setPasswordStrength] = useState(0);
   const [err, setErr] = useState(false);
@@ -75,9 +75,8 @@ export function ResetPasswordForm() {
     // ✅ This will be type-safe and validated.
     setLoading(true);
     try {
-      // await signin(values.email, values.password);
+      await createNewPassword();
       setLoading(false);
-      //   router.push(`/`);
     } catch (err) {
       const errorMessage = (err as Error).message; // Assert err as Error to access message
       setErr(true);

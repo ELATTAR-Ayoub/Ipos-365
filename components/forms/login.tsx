@@ -28,11 +28,11 @@ import Loader from "../Loader";
 import { Separator } from "../ui/separator";
 
 // auth
-// import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/context/AuthContext";
 
 const formSchema = z.object({
-  email: z.string().min(10, {
-    message: "Email must be at least 10 characters.",
+  email: z.string().email({
+    message: "Please provide a valid email address.",
   }),
   password: z
     .string()
@@ -48,7 +48,7 @@ const formSchema = z.object({
 });
 
 export function LoginForm() {
-  // const { user, signin, signinPopup } = useAuth();
+  const { login } = useAuth();
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState(false);
   const [errMsg, setErrMsg] = useState("");
@@ -64,14 +64,12 @@ export function LoginForm() {
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log("sdd");
-
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     setLoading(true);
     try {
-      // await signin(values.email, values.password);
+      await login();
       setLoading(false);
-      //   router.push(`/`);
     } catch (err) {
       const errorMessage = (err as Error).message; // Assert err as Error to access message
       setErr(true);

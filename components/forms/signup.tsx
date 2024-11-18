@@ -7,6 +7,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
+// style
+import styles from "@/styles";
+import { ArrowLeft } from "lucide-react";
+
 // components
 import Loader from "../Loader";
 import { Button } from "@/components/ui/button";
@@ -24,9 +28,7 @@ import { Separator } from "../ui/separator";
 import { Checkbox } from "../ui/checkbox";
 
 // auth
-// import { useAuth } from "@/context/AuthContext";
-import styles from "@/styles";
-import { ArrowLeft } from "lucide-react";
+import { useAuth } from "@/context/AuthContext";
 
 // Taiwan phone regex (matches the format: +886 0 936707440 or similar)
 const phoneRegex = /^(?:\+886[\s\-]?)?(?:0[\s\-]?)?\d{9}$/;
@@ -43,8 +45,8 @@ const formSchema = z
     username: z.string().min(4, {
       message: "Username must be at least 4 characters.",
     }),
-    email: z.string().min(10, {
-      message: "Email must be at least 10 characters.",
+    email: z.string().email({
+      message: "Please provide a valid email address.",
     }),
     phone: z
       .string()
@@ -76,7 +78,7 @@ const formSchema = z
   });
 
 export function SignupForm() {
-  // const { user, signup, signupPopup } = useAuth();
+  const { signup } = useAuth();
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState(false);
   const [errMsg, setErrMsg] = useState("");
@@ -102,9 +104,8 @@ export function SignupForm() {
     setUserAvatar(setUserAvatar + values.username);
     setLoading(true);
     try {
-      // await signup(values.email, values.password, userAvatar, values.username);
+      await signup();
       setLoading(false);
-      // router.push(`/`);
     } catch (err) {
       const errorMessage = (err as Error).message; // Assert err as Error to access message
       setErr(true);
