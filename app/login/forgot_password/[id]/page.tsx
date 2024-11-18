@@ -13,7 +13,7 @@ import { ResetPasswordForm } from "@/components/forms/reset-password";
 export default function Page({ params }: any) {
   return (
     <section
-      className={`  relative ${styles.flexCenter} w-full min-h-screen sm:h-screen `}
+      className={`  relative ${styles.flexCenter} w-full min-h-screen sm:h-screen h-full `}
     >
       <ResetPasswordForm />
 

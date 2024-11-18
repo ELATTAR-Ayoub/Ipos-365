@@ -13,7 +13,7 @@ import { LoginForm } from "@/components/forms/login";
 export default function Page() {
   return (
     <section
-      className={`  relative ${styles.flexCenter} w-full min-h-screen sm:h-screen `}
+      className={`  relative ${styles.flexCenter} w-full min-h-screen sm:h-screen h-full`}
     >
       <LoginForm />
 

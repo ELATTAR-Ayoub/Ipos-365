@@ -17,9 +17,7 @@ import { SmallFooter } from "@/components/small-footer";
 
 export default function Page() {
   return (
-    <section
-      className={`  relative ${styles.flexCenter}  w-full min-h-screen sm:h-screen`}
-    >
+    <section className={`  relative ${styles.flexCenter}  w-full h-full`}>
       <section className={`  relative ${styles.flexCenter} w-full h-full `}>
         <div
           className={`  relative ${styles.flexBetween} w-full h-full py-8 px-4 flex-col sm:max-w-[500px] space-y-4`}
